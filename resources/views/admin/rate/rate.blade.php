@@ -1,4 +1,4 @@
-@extends('admin.admincontrolpanel')
+@extends('admin.mainadmin')
 <link rel="stylesheet" href="/css/app.css">
 @section('content')
 <table id="comment" class="table table-bordered table-striped mb-0">

@@ -1,4 +1,4 @@
-@extends('admin.admincontrolpanel')
+@extends('admin.mainadmin')
 <link rel="stylesheet" href="/css/app.css">
 @section('content')
 <a href="{{asset('admin/ordermethods/insert')}}" class="btn btn-primary">

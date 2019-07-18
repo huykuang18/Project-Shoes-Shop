@@ -15,11 +15,11 @@ class AdminLoginMiddleware
      */
     public function handle($request, Closure $next)
     {
-        // if(session('userAdmin'))
-        // {
-        //     return redirect('admin/login');
-        // }
-        // else
-        //     return $next($request);
+        if(!session('userAdmin'))
+        {
+            return redirect('admin/login');
+        }
+        else
+            return $next($request);
     }
 }

@@ -36,7 +36,10 @@ Route::post('register','RegisterController@postRegister')->name('guest.register'
 Route::get('productdetail/{id}', 'ProductController@productDetail');
 Route::post('productdetail/{id?}', 'ProductController@postProduct');
 
-Route::prefix('admin')->group(function(){
+Route::get('admin/login','AdminController@login');
+Route::post('admin/login','AdminController@postLoginAdmin');
+
+Route::prefix('admin')->middleware('adminLogin')->group(function(){
 
 	Route::get('productedit/{id}','AdminController@productEdit');
 	Route::post('productedit/{id}','AdminController@postProductEdit');
@@ -48,8 +51,6 @@ Route::prefix('admin')->group(function(){
 	Route::get('product/delete/{id?}','AdminController@productDelete');
 
 	Route::get('/','AdminController@index');
-	Route::get('login','AdminController@login');
-	Route::post('login','AdminController@postLoginAdmin');
 
 	Route::get('productInsert','AdminController@insert');
 	Route::post('productInsert','AdminController@postInsert');
