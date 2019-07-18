@@ -1,0 +1,21 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+.img:hover{
+	transform: scale(1.12);
+	cursor: pointer;
+}
+
+.img{
+	transition-duration: 0.69s;
+}
+
+.sp{
+	border: #ccc thin solid;
+	
+}
+#images
+	text-align: center;
+}
