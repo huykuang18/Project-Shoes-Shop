@@ -40,7 +40,16 @@ $total=0;
 			{{number_format($product->productPrice,0,',','.')}}
 		</section>
 		<section class="col-md-2">
-			
+			<select class="form-control form-control-sm" name="{{$product->id}}" id="sel1">
+				<option value="36">36</option>
+				<option value="37">37</option>
+				<option value="38">38</option>
+				<option value="39">39</option>
+				<option value="40">40</option>
+				<option value="41">41</option>
+				<option value="42">42</option>
+				<option value="43">43</option>
+			</select>
 		</section>
 		<section class="col-md-2">
 			<input class="form-control form-control-sm" type="number" name="{{$product->id}}" value='{{session("cart.$product->id")}}'>

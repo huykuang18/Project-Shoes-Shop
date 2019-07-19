@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\User;
 
+
 class LoginController extends Controller
 {
     protected $title = 'Đăng nhập';
@@ -19,6 +20,7 @@ class LoginController extends Controller
     public function logout()
     {
         session()->forget('user');
+        session()->forget("cart");
         return redirect('/');
     }
 

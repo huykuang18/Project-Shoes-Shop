@@ -5,12 +5,6 @@
 
 <section class="order">
 	<h1>ĐẶT HÀNG</h1>
-	@if(session('alert'))
-		<script>
-			alert("Hàng đã đặt thành công! Chúng tôi sẽ giao hàng sớm nhất cho bạn");
-			location = '.';
-		</script>
-	@endif
 	<section>
 		<h2><img width="50" src="/images/ship.gif" alt="">&nbsp;Thông tin giao hàng:</h2><br>
 		<section>

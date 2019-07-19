@@ -19,6 +19,10 @@
 				<a class="nav-link" href="{{url('cart')}}" style="color:black; font-weight: bold;"><i class="fa fa-shopping-cart" style="font-size:20px;color:orange;"></i>&nbsp;Giỏ hàng của tôi</a>
 			</li>
 
+			<li class="nav-item">				
+				<a class="nav-link" href="{{url('order/follow')}}" style="color:black; font-weight: bold;"><i class="fa fa-podcast" style="font-size:20px;color:orange;"></i>&nbsp;Theo dõi đơn hàng</a>
+			</li>
+
 			<div class="dropdown dropleft">
 				<button class="btn btn-outline-info my-2 my-sm-0 dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 					<i class="fa fa-user">&nbsp;{{session('user')}}</i>

@@ -27,7 +27,7 @@
 			<tr>
 				<td style="text-align: center;" ><img style="width: 40% " src="{{asset('/images/'.$product->productImage)}}" alt=""></td>
 				<td>{{$product->productName}}</td>
-				<td>{{$product->productPrice}}</td>
+				<td>{{number_format($product->productPrice,0,',','.')}}</td>
 				<td>{{$product->brandName}}</td>
 				<td>
 					<a href="{{url('admin/productedit/'.$product->id)}}" class="btn btn-info"><i class="fa fa-pencil" aria-hidden="true"></i>

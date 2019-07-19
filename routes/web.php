@@ -36,6 +36,9 @@ Route::post('register','RegisterController@postRegister')->name('guest.register'
 Route::get('productdetail/{id}', 'ProductController@productDetail');
 Route::post('productdetail/{id?}', 'ProductController@postProduct');
 
+Route::get('order/follow','OrderController@followOrder');
+Route::get('order/detail/{id}','OrderController@orderDetail');
+
 Route::get('admin/login','AdminController@login');
 Route::post('admin/login','AdminController@postLoginAdmin');
 

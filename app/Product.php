@@ -12,4 +12,10 @@ class Product extends Model
     {
     	return $this->hasMany(\App\Rate::class,'productID','id');
     }
+    public function orderdetail()
+	{
+
+		return $this->belongsToMany(\App\OrderDetail::class,'productId','id');
+
+	}
 }

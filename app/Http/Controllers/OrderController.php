@@ -41,7 +41,7 @@ class OrderController extends Controller
 			]);
 		endforeach;
 		session()->forget("cart");
-		return redirect()->back()->with('alert','success');
+		return redirect('order/follow')->with('alert','success');
 
 	}
 
@@ -54,5 +54,21 @@ class OrderController extends Controller
 			'address'=>$request->input('address')
 		]);
 		return redirect()->back();
+	}
+
+	public function followOrder(){
+		$user = User::where('username',session('user'))->first();
+		$userId=$user->id;
+		$orders=Order::where('userId',$userId)->get();
+		$count=Order::where('userId',$userId)->count();
+		return view('follow',compact('orders','count'));
+	}
+
+	public function OrderDetail($id){
+		$user = User::where('username',session('user'))->first();
+		$userId=$user->id;
+		$orders=Order::where('userId',$userId)->first();
+		$orderDetails=OrderDetail::where('orderId',$id)->get();
+		return view('orderDetail',compact('orders','orderDetails'));
 	}
 }

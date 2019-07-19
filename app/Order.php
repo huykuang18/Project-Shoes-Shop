@@ -20,4 +20,10 @@ class Order extends Model
 		return $this->belongsTo(\App\OrderMethod::class,'methodId','id');
 
 	}
+	public function orderdetail()
+	{
+
+		return $this->hasOne(\App\OrderDetail::class);
+
+	}
 }
