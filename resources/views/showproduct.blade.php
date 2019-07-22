@@ -18,11 +18,11 @@
 					{{$product->productName}}
 				</section>
 				<section class="price">
-					{{number_format($product->productPrice,0,',','.')}} vnd
+					{{number_format($product->productPrice,0,',','.')}} <sup style="color: red;"><b>VNĐ</b></sup>
 				</section>
 				<section class="order">
-					<a href="{{url('cart/add/'.$product->id)}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-					<a href="{{url('productdetail/'.$product->id)}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+					<a href="{{url('cart/add/'.$product->id)}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+					<a href="{{url('productdetail/'.$product->id)}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 				</section>
 			</section>
 		</section>

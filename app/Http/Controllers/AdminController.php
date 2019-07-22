@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\User;
 use App\Admin;
 use App\Product;
 use App\Order;
@@ -68,7 +69,7 @@ class Admincontroller extends Controller
         if($productImage!=null){
             $image=time().'_'.$productImage->getClientOriginalName();
             $productImage->move('images/',$image);
-            unlink('images/'.$product->productImage);
+            // unlink('images/'.$product->productImage);
         }else{
             $image=$product->productImage;
         }
@@ -233,8 +234,11 @@ class Admincontroller extends Controller
         return redirect()->back();
     }
     public function getorderEdit($id){
-        $orders=Order::where('id',$id)->get();
-        return view('admin.order.orderEdit',compact('orders'));
+        $user = User::where('username',session('user'))->first();
+        $userId=$user->id;
+        $order=Order::where('userId',$userId)->first();
+        $orderDetails=OrderDetail::where('orderId',$id)->get();
+        return view('admin.order.orderEdit',compact('order','orderDetails'));
     }
     public function postorderEdit(Request $request,$id){
         $status = $request->status;

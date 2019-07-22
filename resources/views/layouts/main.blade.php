@@ -60,7 +60,7 @@
 	</nav>
 	<nav id="line" class="navbar navbar-expand-sm navbar-static-top ship">
 		<ul class="navbar-nav mr-auto">
-			<img width="20" src="/images/call.gif">&nbsp;<b>Hotline: 0394366374 | 0373872918</b>
+			<img width="20" src="/images/call.gif">&nbsp;<b>Hotline: 0394366374 | 0373872918</b>&nbsp;&nbsp;
 			<img width="40" src="/images/ship.gif">&nbsp;<b>Giao hàng miễn phí nội thành</b>
 		</ul>
 		<ul class="navbar-nav justify-content-end">

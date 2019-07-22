@@ -18,10 +18,10 @@
 					{{$sale->productName}}
 				</section>
 				<section class="price" style="text-decoration: line-through;">
-					{{number_format($sale->productPrice,0,',','.')}} vnd
+					{{number_format($sale->productPrice,0,',','.')}} <sup style="color: red;"><b>VNĐ</b></sup>
 				</section>
 				<section class="price" style="color: red; padding-bottom: px">
-					{{number_format($sale->priceNew,0,',','.')}} vnd
+					{{number_format($sale->priceNew,0,',','.')}} <sup style="color: red;"><b>VNĐ</b></sup>
 				</section>
 				<section class="order">
 					<a href="{{url('cart/add/'.$sale->id)}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>

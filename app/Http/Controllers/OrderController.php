@@ -32,10 +32,12 @@ class OrderController extends Controller
 		$orderId = $order->id;
 		foreach (array_keys(session('cart')) as $productId):
 			$quantity = session("cart.$productId");
+			$size = session("cart.size");
 			$price = Product::where('id',$productId)->first()->productPrice;
 			OrderDetail::insert([
 				'orderId'=>$orderId,
 				'productId'=>$productId,
+				'size'=>$size,
 				'quantity'=>$quantity,
 				'price'=>$price
 			]);
@@ -67,8 +69,8 @@ class OrderController extends Controller
 	public function OrderDetail($id){
 		$user = User::where('username',session('user'))->first();
 		$userId=$user->id;
-		$orders=Order::where('userId',$userId)->first();
+		$order=Order::where('userId',$userId)->first();
 		$orderDetails=OrderDetail::where('orderId',$id)->get();
-		return view('orderDetail',compact('orders','orderDetails'));
+		return view('orderDetail',compact('order','orderDetails'));
 	}
 }

@@ -14,11 +14,11 @@
 				Adidas Alpha
 			</section>
 			<section class="price">
-				5,000,000 vnd
+				5,000,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/5')}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-				<a href="{{url('productdetail/5')}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+				<a href="{{url('cart/add/5')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/5')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -33,11 +33,11 @@
 				Adidas Ultra Boost
 			</section>
 			<section class="price">
-				4,000,000 vnd
+				4,000,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/18')}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-				<a href="{{url('productdetail/18')}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+				<a href="{{url('cart/add/18')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/18')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -52,11 +52,11 @@
 				Adidas Alpha
 			</section>
 			<section class="price">
-				3,000,000 vnd
+				3,000,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/4')}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-				<a href="{{url('productdetail/4')}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+				<a href="{{url('cart/add/4')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/4')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -72,11 +72,11 @@
 				Converse Chuck 70 Boardies
 			</section>
 			<section class="price">
-				1,500,000 vnd
+				1,500,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/41')}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-				<a href="{{url('productdetail/41')}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+				<a href="{{url('cart/add/41')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/41')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -91,11 +91,11 @@
 				Converse Chuck Taylor All Star Boardies
 			</section>
 			<section class="price">
-				1,700,000 vnd
+				1,700,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/44')}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-				<a href="{{url('productdetail/44')}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+				<a href="{{url('cart/add/44')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/44')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -109,11 +109,11 @@
 				Converse Chuck Taylor All Star Boardies
 			</section>
 			<section class="price">
-				1,700,000 vnd
+				1,700,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/45')}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-				<a href="{{url('productdetail/45')}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+				<a href="{{url('cart/add/45')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/45')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -130,11 +130,11 @@
 				Bitis Hunter Midnight Joy
 			</section>
 			<section class="price">
-				900,000 vnd
+				900,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/29')}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-				<a href="{{url('productdetail/29')}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+				<a href="{{url('cart/add/29')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/29')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -149,11 +149,11 @@
 				Bitis Hunter Summer 2k19
 			</section>
 			<section class="price">
-				1,000,000 vnd
+				1,000,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/34')}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-				<a href="{{url('productdetail/34')}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+				<a href="{{url('cart/add/34')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/34')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -168,11 +168,11 @@
 				Bitis Hunter Retro
 			</section>
 			<section class="price">
-				900,000 vnd
+				900,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/32')}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-				<a href="{{url('productdetail/32')}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+				<a href="{{url('cart/add/32')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/32')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -193,11 +193,11 @@
 				Adidas Alpha
 			</section>
 			<section class="price">
-				1,500,000 vnd
+				1,500,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/1')}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-				<a href="{{url('productdetail/')}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+				<a href="{{url('cart/add/1')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -213,11 +213,11 @@
 				Adidas Alpha
 			</section>
 			<section class="price">
-				1,500,000 vnd
+				1,500,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/1')}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-				<a href="{{url('productdetail/')}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+				<a href="{{url('cart/add/1')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -231,11 +231,11 @@
 				Adidas Alpha
 			</section>
 			<section class="price">
-				1,500,000 vnd
+				1,500,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/1')}}" class="btn btn-outline-info" style="margin-bottom: 20px;">Thêm vào giỏ</a>
-				<a href="{{url('productdetail/')}}" class="btn btn-warning" style="margin-bottom: 20px;">Chi tiết</a>
+				<a href="{{url('cart/add/1')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		

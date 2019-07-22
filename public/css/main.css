@@ -1,8 +1,10 @@
 *{
+	font-family: 'Geostar Fill', cursive;
 	padding: 0;
 	margin: 0;
 }
 .hutra{
+
 	margin-bottom: 0;
 	color:gold;
 	text-shadow: 0 0 20px yellow;
@@ -47,7 +49,6 @@
 	background: white;
 	border: orange thin solid;
 	width: auto;
-	/*margin-top: 5.5555%;*/
 	height: 38px;
 }
 
@@ -58,6 +59,7 @@
 
 
 body{
+	font-family: 'Geostar Fill', cursive;
 	min-height: 1000px;
 	position: relative;
 }

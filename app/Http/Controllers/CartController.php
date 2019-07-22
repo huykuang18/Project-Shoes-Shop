@@ -51,6 +51,6 @@ class CartController extends Controller
 			default:
 			return view('cart');
 			break;
-		}
+		} 
 	}
 }

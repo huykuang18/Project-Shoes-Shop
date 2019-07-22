@@ -5,8 +5,6 @@
 	<tr>
 		<th>Họ tên khách hàng</th>
 		<th>Phương thức thanh toán</th>
-		<th>Size</th>
-		<th>Ngày đặt hàng</th>
 		<th>Trạng thái đơn hàng</th>
 		<th>Thao tác</th>
 	</tr>
@@ -15,8 +13,6 @@
 	<tr>
 		<td>{{$order->user->fullname}}</td>
 		<td>{{$order->method->methodName}}</td>
-		<td></td>
-		<td>{{$order->orderDate}}</td>
 		<td>
 			@if($order->status==1)
 			Chưa xử lý
