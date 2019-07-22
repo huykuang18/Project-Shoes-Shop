@@ -76,7 +76,8 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
 	Route::get('edit/ordermethod/{id}','AdminController@getOrderMethodEdit');
 	Route::post('edit/ordermethod/{id}','AdminController@postOrderMethodEdit');
 
-	Route::get('orders','AdminController@order');
+	Route::get('order/status/{id}','AdminController@order');
+	Route::get('order','AdminController@orders');
 	Route::get('delete/order/{id}','AdminController@orderDelete');
 	Route::get('edit/order/{id}','AdminController@getOrderEdit');
 	Route::post('edit/order/{id}','AdminController@postOrderEdit');

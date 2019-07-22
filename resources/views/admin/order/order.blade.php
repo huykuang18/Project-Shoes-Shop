@@ -17,14 +17,16 @@
 			@if($order->status==1)
 			Chưa xử lý
 			@elseif($order->status==2)
-			Đang xử lý
+			Đã đóng gói
 			@elseif($order->status==3)
+			Đang vận chuyển
+			@elseif($order->status==4)
 			Đã giao hàng thành công
 			@endif
 		</td>
 		<td>
 			<a href="{{asset('admin/edit/order/'.$order->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-			@if($order->status==3)
+			@if($order->status==4)
 			<a href="{{asset('admin/delete/order/'.$order->id)}}" onclick="return confirm('Bạn chắc chắn muốn xóa?')" class="btn btn-danger"><i class="fa fa-close"></i></a>
 			@else		
 			@endif

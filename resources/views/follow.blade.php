@@ -28,8 +28,10 @@
 			@if($order->status==1)
 			Chưa xử lý
 			@elseif($order->status==2)
-			Đang xử lý
+			Đã đóng gói
 			@elseif($order->status==3)
+			Đang vận chuyển
+			@elseif($order->status==4)
 			Đã giao hàng thành công
 			@endif
 		</td>

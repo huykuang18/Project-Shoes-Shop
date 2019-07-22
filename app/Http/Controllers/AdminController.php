@@ -59,338 +59,343 @@ class Admincontroller extends Controller
 
     public function postProductEdit($id, Request $request)
     {
-
-        $product=Product::find($id);
-        $brandId=$request->brandId;
-        $productName=$request->productName;
-        $productPrice=$request->productPrice;
-        $productDescription=$request->productDescription;
-        $productImage=$request->file('productImage');
-        if($productImage!=null){
-            $image=time().'_'.$productImage->getClientOriginalName();
-            $productImage->move('images/',$image);
+       $product=Product::find($id);
+       $brandId=$request->brandId;
+       $brand=Brand::where('id',$brandId)->first();
+       $brandName=$brand->brandName;
+       $productName=$request->productName;
+       $productPrice=$request->productPrice;
+       $productDescription=$request->productDescription;
+       $productImage=$request->file('productImage');
+       if($productImage!=null){
+        $image=$brandName.'/'.$productImage->getClientOriginalName();
+        $productImage->move('images/'.$brandName,$image);
             // unlink('images/'.$product->productImage);
-        }else{
-            $image=$product->productImage;
-        }
-
-        Product::where('id',$id)->update([
-
-            'brandId'=>$brandId,
-            'productName'=>$productName,
-            'productPrice'=>$productPrice,
-            'productDescription'=>$productDescription,
-            'productImage'=>$image
-        ]);
-
-        return redirect('admin/products');
-
+    }else{
+        $image=$product->productImage;
     }
 
-    public function productDelete($id=null){
-        Product::where('id',$id)->delete();
-        return redirect('admin/products');
-    }
+    Product::where('id',$id)->update([
 
-    public function insert($id=null)
-    {
-        $product=Product::find($id);
-        $hangs=Brand::all();
-        return view('admin.product.productInsert',compact('hangs','product'));
-    }
+        'brandId'=>$brandId,
+        'productName'=>$productName,
+        'productPrice'=>$productPrice,
+        'productDescription'=>$productDescription,
+        'productImage'=>$image
+    ]);
 
-    public function postInsert(Request $request)
-    {
-        $brandId=$request->brand_id;
-        $productName=$request->product_name;
-        $productPrice=$request->product_price;
-        $productDescription=$request->product_description;
-        $status=$request->status;
-        $productImage=$request->productImage;
-        $image=$request->$productImage;
-        Product::insert([
+    return redirect('admin/products');
 
-            'brandId'=>$brandId,
-            'productName'=>$productName,
-            'productPrice'=>$productPrice,
-            'productDescription'=>$productDescription,
-            'status'=>$status,
-            'productImage'=>$image,
-        ]);
-        return redirect('admin/products');
-    }
+}
+
+public function productDelete($id=null){
+    Product::where('id',$id)->delete();
+    return redirect('admin/products');
+}
+
+public function insert($id=null)
+{
+    $product=Product::find($id);
+    $hangs=Brand::all();
+    return view('admin.product.productInsert',compact('hangs','product'));
+}
+
+public function postInsert(Request $request)
+{
+    $brandId=$request->brand_id;
+    $productName=$request->product_name;
+    $productPrice=$request->product_price;
+    $productDescription=$request->product_description;
+    $status=$request->status;
+    $productImage=$request->productImage;
+    $image=$request->$productImage;
+    Product::insert([
+
+        'brandId'=>$brandId,
+        'productName'=>$productName,
+        'productPrice'=>$productPrice,
+        'productDescription'=>$productDescription,
+        'status'=>$status,
+        'productImage'=>$image,
+    ]);
+    return redirect('admin/products');
+}
 
     //Add
 
     //Rates
-    public function rates($id=null)
-    {
-        $product=Product::find($id);
+public function rates($id=null)
+{
+    $product=Product::find($id);
 
-        $productComments = $product->product_comments()->with('user')->get();
+    $productComments = $product->product_comments()->with('user')->get();
 
-        $countrate = Rate::where('ProductID',$id)->count('userID');
+    $countrate = Rate::where('ProductID',$id)->count('userID');
 
-        return view('admin.rate.rate',compact('productComments','countrate'));
+    return view('admin.rate.rate',compact('productComments','countrate'));
 
-    }
+}
 
-    public function rateDelete($id){
-        Rate::where('id',$id)->delete();
-        return redirect()->back();
-    }
+public function rateDelete($id){
+    Rate::where('id',$id)->delete();
+    return redirect()->back();
+}
 
     //Brands
-    public function brands()
-    {
-        $brands = Brand::get();
-        return view('admin.brand.brand',compact('brands'));
-    }
-    public function getBrandInsert()
-    {
-        return view('admin.brand.brandInsert');
-    }
-    public function postBrandInsert(Request $request)
-    {
-        $brandName = $request->brandName;
-        $status = $request->status;
+public function brands()
+{
+    $brands = Brand::get();
+    return view('admin.brand.brand',compact('brands'));
+}
+public function getBrandInsert()
+{
+    return view('admin.brand.brandInsert');
+}
+public function postBrandInsert(Request $request)
+{
+    $brandName = $request->brandName;
+    $status = $request->status;
 
-        Brand::insert([
-            'brandName'=>$brandName,
-            'status'=>$status
-        ]);
+    Brand::insert([
+        'brandName'=>$brandName,
+        'status'=>$status
+    ]);
 
-        return redirect('admin/brands');
-    }
-    public function brandDelete($id){
-        Brand::where('id',$id)->delete();
-        return redirect()->back();
-    }
-    public function getBrandEdit($id){
-        $brands=Brand::where('id',$id)->get();
-        return view('admin.brand.brandEdit',compact('brands'));
-    }
-    public function postBrandEdit(Request $request,$id){
-        $brandName = $request->brandName;
-        $status = $request->status;
+    return redirect('admin/brands');
+}
+public function brandDelete($id){
+    Brand::where('id',$id)->delete();
+    return redirect()->back();
+}
+public function getBrandEdit($id){
+    $brands=Brand::where('id',$id)->get();
+    return view('admin.brand.brandEdit',compact('brands'));
+}
+public function postBrandEdit(Request $request,$id){
+    $brandName = $request->brandName;
+    $status = $request->status;
 
-        Brand::where('id',$id)->update([
-            'brandName'=>$brandName,
-            'status'=>$status
-        ]);
+    Brand::where('id',$id)->update([
+        'brandName'=>$brandName,
+        'status'=>$status
+    ]);
 
-        return redirect('admin/brands');
-    }
+    return redirect('admin/brands');
+}
 
     //Order Method
-    public function ordermethods()
-    {
-        $ordermethods = Ordermethod::get();
-        return view('admin.order_method.orderMethod',compact('ordermethods'));
-    }
-    public function getOrderMethodInsert()
-    {
-        return view('admin.order_method.orderMethodInsert');
-    }
-    public function postOrderMethodInsert(Request $request)
-    {
-        $methodName = $request->methodName;
-        $status = $request->status;
+public function ordermethods()
+{
+    $ordermethods = Ordermethod::get();
+    return view('admin.order_method.orderMethod',compact('ordermethods'));
+}
+public function getOrderMethodInsert()
+{
+    return view('admin.order_method.orderMethodInsert');
+}
+public function postOrderMethodInsert(Request $request)
+{
+    $methodName = $request->methodName;
+    $status = $request->status;
 
-        Ordermethod::insert([
-            'methodName'=>$methodName,
-            'status'=>$status
-        ]);
+    Ordermethod::insert([
+        'methodName'=>$methodName,
+        'status'=>$status
+    ]);
 
-        return redirect('admin/ordermethods');
-    }
-    public function ordermethodDelete($id){
-        Ordermethod::where('id',$id)->delete();
-        return redirect()->back();
-    }
-    public function getordermethodEdit($id){
-        $ordermethods=Ordermethod::where('id',$id)->get();
-        return view('admin.order_method.orderMethodEdit',compact('ordermethods'));
-    }
-    public function postordermethodEdit(Request $request,$id){
-        $methodName = $request->methodName;
-        $status = $request->status;
+    return redirect('admin/ordermethods');
+}
+public function ordermethodDelete($id){
+    Ordermethod::where('id',$id)->delete();
+    return redirect()->back();
+}
+public function getordermethodEdit($id){
+    $ordermethods=Ordermethod::where('id',$id)->get();
+    return view('admin.order_method.orderMethodEdit',compact('ordermethods'));
+}
+public function postordermethodEdit(Request $request,$id){
+    $methodName = $request->methodName;
+    $status = $request->status;
 
-        ordermethod::where('id',$id)->update([
-            'methodName'=>$methodName,
-            'status'=>$status
-        ]);
+    ordermethod::where('id',$id)->update([
+        'methodName'=>$methodName,
+        'status'=>$status
+    ]);
 
-        return redirect('admin/ordermethods');
-    }
+    return redirect('admin/ordermethods');
+}
 
     //Order
-    public function order(){
-        $orders=Order::all();
-        return view('admin.order.order',compact('orders'));
-    }
-    public function orderDelete($id){
-        Order::where('id',$id)->delete();
-        return redirect()->back();
-    }
-    public function getorderEdit($id){
-        $user = User::where('username',session('user'))->first();
-        $userId=$user->id;
-        $order=Order::where('userId',$userId)->first();
-        $orderDetails=OrderDetail::where('orderId',$id)->get();
-        return view('admin.order.orderEdit',compact('order','orderDetails'));
-    }
-    public function postorderEdit(Request $request,$id){
-        $status = $request->status;
-        Order::where('id',$id)->update([
-            'status'=>$status
-        ]);
+public function order($id){
+    $orders=Order::where('status',$id)->get();
+    return view('admin.order.order',compact('orders'));
+}
+public function orders(){
+    $orders=Order::all();
+    return view('admin.order.order',compact('orders'));
+}
+public function orderDelete($id){
+    Order::where('id',$id)->delete();
+    return redirect()->back();
+}
+public function getorderEdit($id){
+    $user = User::where('username',session('user'))->first();
+    $userId=$user->id;
+    $order=Order::where('userId',$userId)->first();
+    $orderDetails=OrderDetail::where('orderId',$id)->get();
+    return view('admin.order.orderEdit',compact('order','orderDetails'));
+}
+public function postorderEdit(Request $request,$id){
+    $status = $request->status;
+    Order::where('id',$id)->update([
+        'status'=>$status
+    ]);
 
-        return redirect('admin/orders');
-    }
+    return redirect('admin/order');
+}
 
 //Admins
 
-    public function adminDelete($id=null){
+public function adminDelete($id=null){
 
-        Admin::where('id',$id)->delete();
-        
-        return redirect('admin/users');
-    }
-    
-    public function admins(Request $request){
-        $admins=DB::table('admin')->get();
-        return view('admin.user.user', compact('admins'));
+    Admin::where('id',$id)->delete();
 
-    }
-    public function getEdit($id){
-        $admins=Admin::where('id',$id)->get();
-        return view('admin.user.userEdit',compact('admins'));
-    }
-    public function adminEdit($id, Request $request)
-    {
+    return redirect('admin/users');
+}
 
-        Admin::where('id',$id)->update([
-            'username'=>$request->username,
-            'password'=>md5($request->newpassword),
-            'status'=>$request->status,
-        ]);
+public function admins(Request $request){
+    $admins=DB::table('admin')->get();
+    return view('admin.user.user', compact('admins'));
 
-        return redirect('admin/users');
+}
+public function getEdit($id){
+    $admins=Admin::where('id',$id)->get();
+    return view('admin.user.userEdit',compact('admins'));
+}
+public function adminEdit($id, Request $request)
+{
 
-    }
-    public function getInsert()
-    {
+    Admin::where('id',$id)->update([
+        'username'=>$request->username,
+        'password'=>md5($request->newpassword),
+        'status'=>$request->status,
+    ]);
 
-        return view('admin.user.userInsert');
-    }
+    return redirect('admin/users');
 
-    public function adminInsert(Request $request)
-    {
+}
+public function getInsert()
+{
 
-        $username=$request->username;
-        $password=md5($request->password);
-        $status=$request->status;
+    return view('admin.user.userInsert');
+}
 
-        Admin::insert([
-            'username'=>$username,
-            'password'=>$password,
-            'status'=>$status
-        ]);
-        return redirect('admin/users');
-        
-    }
+public function adminInsert(Request $request)
+{
+
+    $username=$request->username;
+    $password=md5($request->password);
+    $status=$request->status;
+
+    Admin::insert([
+        'username'=>$username,
+        'password'=>$password,
+        'status'=>$status
+    ]);
+    return redirect('admin/users');
+
+}
 
 //Prices
-    public function prices(Request $request){
-        $prices=DB::table('prices')->get();
-        return view('admin.price.price', compact('prices'));
+public function prices(Request $request){
+    $prices=DB::table('prices')->get();
+    return view('admin.price.price', compact('prices'));
 
-    }
+}
 
-    public function priceEdit($id){
-        $prices=Price::where('id',$id)->get();
-        return view('admin.price.priceEdit',compact('prices'));
-    }
-    public function postPriceEdit($id, Request $request)
-    {
+public function priceEdit($id){
+    $prices=Price::where('id',$id)->get();
+    return view('admin.price.priceEdit',compact('prices'));
+}
+public function postPriceEdit($id, Request $request)
+{
 
-        Price::where('id',$id)->update([
-            'priceName'=>$request->pricename,
-            'priceFrom'=>$request->pricefrom,
-            'priceTo'=>$request->priceto,
-        ]);
+    Price::where('id',$id)->update([
+        'priceName'=>$request->pricename,
+        'priceFrom'=>$request->pricefrom,
+        'priceTo'=>$request->priceto,
+    ]);
 
-        return redirect('admin/prices');
+    return redirect('admin/prices');
 
-    }
-    public function priceDelete($id=null){
+}
+public function priceDelete($id=null){
 
-        Price::where('id',$id)->delete();
-        
-        return redirect('admin/prices');
-    }
+    Price::where('id',$id)->delete();
 
-    public function priceInsert()
-    {
+    return redirect('admin/prices');
+}
 
-        return view('admin.price.priceInsert');
-    }
+public function priceInsert()
+{
 
-    public function postPriceInsert(Request $request)
-    {
+    return view('admin.price.priceInsert');
+}
 
-        Price::insert([
-            'priceName'=>$request->pricename,
-            'priceFrom'=>$request->pricefrom,
-            'priceTo'=>$request->priceto,
-        ]);
-        return redirect('admin/prices');
-        
-    }
+public function postPriceInsert(Request $request)
+{
+
+    Price::insert([
+        'priceName'=>$request->pricename,
+        'priceFrom'=>$request->pricefrom,
+        'priceTo'=>$request->priceto,
+    ]);
+    return redirect('admin/prices');
+
+}
 
 //Sales
 
-    public function sales(Request $request){
-        $sales=DB::table('sales')->get();
-        return view('admin.sale.sale', compact('sales'));
+public function sales(Request $request){
+    $sales=DB::table('sales')->get();
+    return view('admin.sale.sale', compact('sales'));
 
-    }
-    public function saleEdit($id){
-        $sales=Sale::where('id',$id)->get();
-        return view('admin.sale.saleEdit',compact('sales'));
-    }
-    public function postSaleEdit($id, Request $request)
-    {
+}
+public function saleEdit($id){
+    $sales=Sale::where('id',$id)->get();
+    return view('admin.sale.saleEdit',compact('sales'));
+}
+public function postSaleEdit($id, Request $request)
+{
 
-        Sale::where('id',$id)->update([
-            'sale'=>$request->sale,
-            'price'=>$request->price,
-        ]);
+    Sale::where('id',$id)->update([
+        'sale'=>$request->sale,
+        'price'=>$request->price,
+    ]);
 
-        return redirect('admin/sales');
+    return redirect('admin/sales');
 
-    }
-    public function saleInsert()
-    {
+}
+public function saleInsert()
+{
 
-        return view('admin.sale.saleInsert');
-    }
+    return view('admin.sale.saleInsert');
+}
 
-    public function postSaleInsert(Request $request)
-    {
+public function postSaleInsert(Request $request)
+{
 
-        Sale::insert([
-            'sale'=>$request->sale,
-            'price'=>$request->price,
-        ]);
-        return redirect('admin/sales');
-        
-    }
-    public function saleDelete($id=null){
+    Sale::insert([
+        'sale'=>$request->sale,
+        'price'=>$request->price,
+    ]);
+    return redirect('admin/sales');
 
-        Sale::where('id',$id)->delete();
-        
-        return redirect('admin/sales');
-    }
+}
+public function saleDelete($id=null){
+
+    Sale::where('id',$id)->delete();
+
+    return redirect('admin/sales');
+}
 }
