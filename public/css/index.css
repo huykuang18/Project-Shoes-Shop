@@ -6,23 +6,7 @@
 body{
 	width: 100%;
 	height: auto;
-	position: relative;
-}
-
-.ship{
-	background: white;
-	border: orange thin solid;
-	width: auto;
-	height: 38px;
-}
-
-.user a{
-	font-weight: bold;
-	color: black;
-}
-
-#line{
-	margin-top: 6.1%;
+	/*position: relative;*/
 }
 
 #content{

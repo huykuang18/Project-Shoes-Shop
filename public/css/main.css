@@ -6,9 +6,9 @@
 	margin-bottom: 0;
 	color:gold;
 	text-shadow: 0 0 20px yellow;
-	margin-top: 0;
+	margin-top: 5px;
 	font-weight:bold;
-	-webkit-animation: my 700ms infinite;
+	-webkit-animation: my 1000ms infinite;
 }
 
 .right{
@@ -16,18 +16,46 @@
 }
 
 .nav-item a{
-	font-size: 18px;
+	font-size: 16px;
 	font-color: black;
 }
+.search{
+	margin-top: 3%;
+}
+#navbar{
+	height: 14%;
+	position: relative;
+	background: url(https://img2.thuthuatphanmem.vn/uploads/2019/01/20/nhung-background-den-dep_034513466.jpg);  
+	background: -webkit-linear-gradient(to right, #070000, #4C0001, #070000);  
+	background: linear-gradient(to right, #070000, #4C0001, #070000); 
+}
+
 #nav{
 	width: 100%;
+	background: #070000;  
+	background: -webkit-linear-gradient(to right, #070000, #4C0001, #070000);  
+	background: linear-gradient(to right, #070000, #4C0001, #070000); 
+	margin-left: 50%;
+	position: absolute;
 	z-index: 10000;
-	top: 0;
-	background: #40E0D0;
-	background: -webkit-linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
-	background: linear-gradient(to right, #FF0080, #FF8C00, #40E0D0);
-	
+	border-bottom-left-radius: 50px;
+	border-top-left-radius: 50px;
+	padding: 1%;
 }
+
+.ship{
+	background: white;
+	border: orange thin solid;
+	width: auto;
+	/*margin-top: 5.5555%;*/
+	height: 38px;
+}
+
+.user a{
+	font-weight: bold;
+	color: black;
+}
+
 
 body{
 	min-height: 1000px;
