@@ -17,6 +17,10 @@ Route::get('login', 'LoginController@getLogin')->name('login');
 Route::post('login','LoginController@postLogin')->name('login');
 Route::get('logout','LoginController@logout');
 
+//user
+Route::get('user','LoginController@user');
+Route::post('user','LoginController@updateinfo');
+
 Route::post('cart/{action?}/{id?}','CartController@cart');
 Route::get('cart/{action?}/{id?}','CartController@cart');
 

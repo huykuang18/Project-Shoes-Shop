@@ -37,4 +37,23 @@ class LoginController extends Controller
             return redirect('/');
         }
     }
+
+    public function user()
+    {
+        $users = User::where('username',session('user'))->get();
+        return view('user', compact('users'));
+
+    }
+    public function updateinfo(Request $request){
+
+        User::where('username',session('user'))->update([
+            // 'username'=>$request->username,
+            'password'=>md5($request->password),
+            'fullname'=>$request->fullname,
+            'mobile'=>$request->mobile,
+            'email'=>$request->email,
+            'address'=>$request->address
+        ]);
+        return redirect()->back();      
+    }
 }

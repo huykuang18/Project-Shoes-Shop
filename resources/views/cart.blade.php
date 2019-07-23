@@ -57,8 +57,8 @@ $total=0;
 	@endforeach
 
 	<section class="row">
-		<section class="col-md-3 mr-auto">
-			<a onclick="return confirm('Bạn chắc chứ?')" href="{{url('cart/deleteall')}}" class="btn btn-danger">Xóa tất cả</a>
+		<section class="col-md-4 mr-auto">
+			<a onclick="return confirm('Bạn chắc chứ?')" href="{{url('cart/deleteall')}}" class="btn btn-danger"><i class="fa fa-trash"></i>&nbsp;Xóa tất cả</a>
 			&nbsp;<input class="btn btn-success" type="submit" value="Cập nhật" form="formCart">
 		</section>
 		<section class="col-md-3.5">
@@ -70,7 +70,7 @@ $total=0;
 			<b>{{number_format($total,0,',','.')}}</b>
 		</section>
 		<section class="col-md-2">
-			<a class="btn btn-warning" href="{{url('cart/order')}}">Đặt hàng</a>
+			<a class="btn btn-warning" href="{{url('cart/order')}}"><i class="fa fa-shopping-cart"></i>&nbsp;Đặt hàng</a>
 		</section>
 
 	</section>

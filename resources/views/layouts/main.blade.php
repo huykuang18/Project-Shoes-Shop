@@ -9,17 +9,6 @@
 	@stack("styles")
 </head>
 <body>
-{{-- 	<header id="header" class="">
-		<!-- Brand/logo -->
-		<section class="mr-auto">
-			
-			<section class="mr-auto">
-
-			</section>	
-		</section>
-		
-
-	</header><!-- /header --> --}}
 	<nav id="navbar"  class="navbar navbar-expand-sm navbar-dark navbar-static-top nav">
 		<!-- Links -->
 		<ul class="navbar-nav">
@@ -79,6 +68,7 @@
 				</button>
 				<div class="dropdown-menu" aria-labelledby="dropdownMenu2">
 					<a href="/logout" class="dropdown-item">Đăng xuất</a>
+					<a href="/user" class="dropdown-item">Tài khoản của tôi</a>
 				</div>
 			</div>
 			@else

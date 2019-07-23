@@ -196,8 +196,8 @@
 				1,500,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/1')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
-				<a href="{{url('productdetail/')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
+				<a href="{{url('cart/add/3')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/3')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -216,8 +216,8 @@
 				1,500,000 <sup style="color: red;"><b>VNĐ</b></sup>
 			</section>
 			<section class="order">
-				<a href="{{url('cart/add/1')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
-				<a href="{{url('productdetail/')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
+				<a href="{{url('cart/add/10')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
+				<a href="{{url('productdetail/10')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		
@@ -235,7 +235,7 @@
 			</section>
 			<section class="order">
 				<a href="{{url('cart/add/1')}}" class="btn btn-outline-info" style="margin-bottom: 20px;"><i class="fa fa-cart-plus"></i>	Thêm vào giỏ</a>
-				<a href="{{url('productdetail/')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
+				<a href="{{url('productdetail/1')}}" class="btn btn-warning" style="margin-bottom: 20px;"><i class="fa fa-share"></i>	Chi tiết</a>
 			</section>
 		</section>
 		

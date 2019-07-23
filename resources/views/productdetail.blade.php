@@ -11,7 +11,7 @@
 				<li><a data-toggle="tab" href="#menu2"><img width="40" height="30" src="{{asset('/images/'.$product->view1)}}"></a></li>&nbsp;
 				<li><a data-toggle="tab" href="#menu3"><img width="40" height="30" src="{{asset('/images/'.$product->view2)}}"></a></li>
 			</ul>
-	<br>
+			<br>
 			<div class="tab-content img-magnifier-container">
 				<div id="menu1" class="tab-pane fade in active">
 					<img id="img1" width="400" height="300" src="{{asset('/images/'.$product->productImage)}}">
@@ -54,6 +54,8 @@
 		</form>
 		<a href="{{url('cart/add/'.$product->id)}}" class="btn btn-outline-dark" style="margin-bottom: 20px;">Thêm vào giỏ</a>
 	</section>
+	<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 </section>
 <section class="row" style="padding-top: 30px;">
 	<h3><b>Mô tả:</b></h3>

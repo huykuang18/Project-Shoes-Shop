@@ -21,11 +21,11 @@
 		</section>
 		<section class="form-group">
 			<label>Mật khẩu:</label>
-			<input type="password" name="password" class="form-control" required>
+			<input min="6" type="password" name="password" class="form-control" required>
 		</section>
 		<section class="form-group">
 			<label>Nhập lại mật khẩu:</label>
-			<input type="password" name="repassword" class="form-control" required>
+			<input min="6" type="password" name="repassword" class="form-control" required>
 		</section>
 		<section class="form-group">
 			<label>Họ và tên:</label>
