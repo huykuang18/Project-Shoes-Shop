@@ -52,9 +52,9 @@ class Admincontroller extends Controller
     }
 
     public function productEdit($id){
-        $product=Product::find($id);
-        $hangs=Brand::all();
-        return view('admin.product.productEdit',compact('hangs','product'));
+        $product=Product::where('id',$id)->first();
+        $brands=Brand::all();
+        return view('admin.product.productEdit',compact('brands','product'));
     }
 
     public function postProductEdit($id, Request $request)

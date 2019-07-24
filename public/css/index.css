@@ -4,10 +4,12 @@
 }
 
 body{
-	font-family: 'Geostar Fill', cursive;
+	/*font-family: 'Geostar Fill', cursive;*/
 	width: 100%;
 	height: auto;
-	/*position: relative;*/
+	background:#e0e0d1;  
+	background: -webkit-linear-gradient(to left,#e0e0d1,#a2a276);  
+	background: linear-gradient(to left,#e0e0d1,#a2a276);
 }
 
 #content{
@@ -38,13 +40,15 @@ body{
 	font-size: 30px;
 	width: 50px;
 	height: 50px;
-	border-radius: 20px;
-	margin-bottom: 5px;
+	border-radius: 80px;
+	margin: auto;
+	margin-top: 5%;
 }
 .btn-mxh a em:before {
 	position: absolute;
 	top: 5px;
 	left: 8px;
+	padding: 5%;
 }
 .btn-mxh a em:hover{
 	background: black;

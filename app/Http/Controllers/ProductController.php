@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Rate;
 use App\Product;
 use App\User;
+use App\Size;
+use App\SizeProduct;
 
 class ProductController extends Controller
 {
@@ -14,9 +16,15 @@ class ProductController extends Controller
 
 		$product=Product::find($id);
 
+		$userName=User::where('username',session('user'))->first()->fullname;
+
 		$productComments = $product->product_comments()->with('user')->get();
 
-		return view('productdetail',compact('product','productComments'));
+		$productSizes = SizeProduct::where('productId',$id)->get();
+
+		$sizes = Size::all();
+
+		return view('productdetail',compact('product','productComments','userName','productSizes','sizes'));
 	}
 
 	public function postProduct($id=null, Request $request)
@@ -26,7 +34,7 @@ class ProductController extends Controller
 
 		$userID=User::where('username',session('user'))->first()->id;
 
-		$comment = $request->comment;
+		$comment = $request->input('comment');
 
 		$rate = $request->rate;
 

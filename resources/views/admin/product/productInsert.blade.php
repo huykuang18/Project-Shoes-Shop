@@ -42,7 +42,7 @@
 					<td>Product description:</td>
 					<td>
 						<textarea name="product_description" class="form-control"></textarea>
-						<script>CKEDITOR.replace('productDescription');</script>
+						<script>CKEDITOR.replace('product_description');</script>
 					</td>
 				</tr>
 				<tr>

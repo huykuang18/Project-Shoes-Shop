@@ -18,4 +18,8 @@ class Product extends Model
 		return $this->belongsToMany(\App\OrderDetail::class,'productId','id');
 
 	}
+    public function sizes()
+    {
+        return $this->belongsToMany(Product::class, 'product_size', 'productId', 'sizeId');
+    }
 }

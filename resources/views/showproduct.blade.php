@@ -1,7 +1,8 @@
 @extends('index')
 @section('title','Home')
-@section('content')
 <link rel="stylesheet" href="\css\showproduct.css">
+@section('content')
+
 
 <section class="container-fluid">
 	@if (count($products)==0)

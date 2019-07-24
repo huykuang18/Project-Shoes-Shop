@@ -31,8 +31,8 @@ class OrderController extends Controller
 		$order = Order::orderBy('id','desc')->first();
 		$orderId = $order->id;
 		foreach (array_keys(session('cart')) as $productId):
-			$quantity = session("cart.$productId");
-			$size = session("cart.size");
+			$quantity = session("cart.$productId.number");
+			$size = session("cart.$productId.size");
 			$price = Product::where('id',$productId)->first()->productPrice;
 			OrderDetail::insert([
 				'orderId'=>$orderId,

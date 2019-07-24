@@ -19,7 +19,7 @@
 			<li class="navbar-item search">
 				<form class="form-inline" method="get" action="{{url('search/keyword/key')}}">
 					<input style="	width: 300px;" type="search" name="keyword" class="form-control mr-2" placeholder="Tìm kiếm sản phẩm..."> 
-{{-- 					<input type="submit" value="Tìm kiếm" class="btn btn-outline-dark"> --}}
+{{-- 					<input type="submit" value="search" class="btn btn-success"> --}}
 				</form>
 			</li>
 		</ul>
@@ -40,7 +40,7 @@
 				<a class="nav-link" href="{{asset('search/brandID/4')}}">Nike</a>
 			</li>
 			<li class="nav-item">
-				<a data-toggle="tab" href="{{asset('help')}}" class="nav-link"><i class="fa fa-question-circle-o"></i>&nbsp;Hướng dẫn chọn giày</a>
+				<a href="{{asset('/help')}}" class="nav-link"><i class="fa fa-question-circle-o"></i>&nbsp;Hướng dẫn chọn giày</a>
 			</li>
 		</ul>
 		<ul class="navbar-nav">

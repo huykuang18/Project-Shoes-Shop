@@ -26,7 +26,10 @@ class CartController extends Controller
 
 			case 'update':
 			foreach (array_keys(session('cart')) as $key) {
-				session(["cart.$key"=>$request->input($key)]);
+				session([
+					"cart.$key.number"=>$request->input('number'),
+					"cart.$key.size"=>$request->input('size')
+				]);
 			}
 			return redirect("cart");
 			break;

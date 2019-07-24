@@ -13,10 +13,10 @@
 			</ul>
 			<br>
 			<div class="tab-content img-magnifier-container">
-				<div id="menu1" class="tab-pane fade in active">
+				<div id="menu1" class="tab-pane fade">
 					<img id="img1" width="400" height="300" src="{{asset('/images/'.$product->productImage)}}">
 				</div>
-				<div id="menu2" class="tab-pane fade">
+				<div id="menu2" class="tab-pane fade in active">
 					<img id="img2" width="400" height="300" src="{{asset('/images/'.$product->view1)}}">
 				</div>
 				<div id="menu3" class="tab-pane fade">
@@ -35,36 +35,59 @@
 	</section>
 	<section class="col-md-6">
 		<h2><b>{{$product->productName}}</b></h2>
-		<h2 style="color: red;">{{number_format($product->productPrice,0,',','.')}}VNĐ</h2>
+		<h2 style="color: red;">{{number_format($product->productPrice,0,',','.')}}<sup>đ</sup></h2>
 
-		<form style="width: 60%;padding-right: 30%;margin-left: 20%;float: left;">
-			<strong>Chọn size:</strong>
-			<div class="form-group" style=" ">
-				<select class="form-control" id="sel1">
-					<option value="36">36</option>
-					<option value="37">37</option>
-					<option value="38">38</option>
-					<option value="39">39</option>
-					<option value="40">40</option>
-					<option value="41">41</option>
-					<option value="42">42</option>
-					<option value="43">43</option>
-				</select>
-			</div>
-		</form>
-		<a href="{{url('cart/add/'.$product->id)}}" class="btn btn-outline-dark" style="margin-bottom: 20px;">Thêm vào giỏ</a>
+		<table class="table table-bordered" style="width: 60%;padding-right: 30%;margin-left: 20%;float: left;">
+			<tr>
+				<th style="background: #ccc;">Size</th>
+				@foreach($sizes as $size)
+				<td>{{$size->size}}</td>
+				@endforeach
+			</tr>
+			<tr>
+				<th style="background: #ccc;">SL</th>
+				@foreach($productSizes as $productSize)
+				<td>{{$productSize->quantity}}</td>
+				@endforeach
+			</tr>
+			
+		</table>
+		<a href="{{url('cart/add/'.$product->id)}}" class="btn btn-outline-secondary" style=" margin-bottom: 20px;">Thêm vào giỏ</a>&nbsp;&nbsp;
+		<a href="{{url('cart/add/'.$product->id)}}" class="btn btn-secondary" style=" margin-bottom: 20px;">Mua ngay</a>
 	</section>
 	<div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 </section>
 <section class="row" style="padding-top: 30px;">
-	<h3><b>Mô tả:</b></h3>
-	{{$product->productDescription}}
+	<section><h3><b>Mô tả:</b></h3></section>
+	<section style="text-align: left; margin-left:10%;"><?= htmlspecialchars_decode($product->productDescription)?></section>
 </section>
 
 
 </section>
 <section class="contaner-fluid" id="show">
+	
+	@if(session('user'))		
+	<form method="post" class="frm">
+		@csrf
+		<table class="table table-bordered">
+			<tr>
+				<td><h5 style="color: blue;">Để lại bình luận dưới tên <a href="/user" style="text-decoration:none;font-style: italic;"><b>{{$userName}}</b></a></h5></td>
+				<td><input id="txt" type="text" name="comment" placeholder="Viết bình luận..." required></td>
+				<td><input style="width: 55px;" class="ip" type="number" min="1" max="10" name="rate" placeholder="Rate" required>&nbsp;					
+					<b>| 10 </b><span class="fa fa-star checked"></span>&nbsp;&nbsp;<input type="submit" class="btn btn-sm btn-outline-dark" value="Post"></td>
+				</tr>
+			</table>
+{{-- 		<section class="form-group">
+			
+			&nbsp;&nbsp;
+			
+			
+		</section> --}}
+	</form>
+	@else
+	<a href="{{asset('login')}}">Đăng nhập để bình luận</a>
+	@endif
 	<h3 style="color: orange; font-style: italic;"><b>Phản hồi từ khách hàng</b></h3>
 	<div class="table-wrapper-scroll-y my-custom-scrollbar">
 		<table id="comment" class="table table-bordered table-striped mb-0">
@@ -86,26 +109,13 @@
 
 		</table>
 	</div>
-	@if(session('user'))		
-	<form method="post" class="frm">
-		@csrf
-		<section class="form-group">
-			<input id="txt" type="text" name="comment" placeholder="Viết bình luận..." required>&nbsp;&nbsp;
-			<input class="ip" type="number" min="1" max="10" name="rate" placeholder="Đánh giá" required>&nbsp;
-			<b>| 10 </b><span class="fa fa-star checked"></span>
-			<input type="submit" class="btn btn-sm btn-outline-dark" value="Post">
-		</section>
-	</form>
-	@else
-	<a href="{{asset('login')}}">Đăng nhập để bình luận</a>
-	@endif
 </section>
 <script>
 /* Initiate Magnify Function
 with the id of the image, and the strength of the magnifier glass:*/
-magnify("img1", 3.5);
-magnify("img2", 3.5);
-magnify("img3", 3.5);
+magnify("img1", 3);
+magnify("img2", 3);
+magnify("img3", 3);
 </script>
 
 @stop

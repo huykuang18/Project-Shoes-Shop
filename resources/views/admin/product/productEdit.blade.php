@@ -10,8 +10,8 @@
 					<td>Hãng: </td>
 					<td>
 						<select name="brandId">
-							@foreach($hangs as $hang)
-							<option value="{{$hang->id}}" <?=$product->brandId!=$hang->brandId?:'selected'?>>{{$hang->brandName}}</option>
+							@foreach($brands as $brand)
+							<option value="{{$brand->id}}"<?=$brand->id!=$product->brandId?:'selected'?>>{{$brand->brandName}}</option>
 							@endforeach
 						</select>
 					</td>
@@ -37,14 +37,14 @@
 					<td>Product status:</td>
 					<td>
 						<input type="radio" name="status" value="1"<?=$product->status!=1?:'checked'?>>Active
-						<input type="radio" name="status" value="1"<?=$product->status!=0?:'checked'?>>Not Active
+						<input type="radio" name="status" value="0"<?=$product->status!=0?:'checked'?>>Not Active
 					</td>
 				</tr>
 				<tr>
 					<td>Product description:</td>
 					<td>
 						<textarea name="productDescription" class="form-control">{{$product->productDescription}}</textarea>
-						<!-- <script>CKEDITOR.replace('productDescription');</script> -->
+						<script>CKEDITOR.replace('productDescription');</script>
 					</td>
 				</tr>
 				<tr>
