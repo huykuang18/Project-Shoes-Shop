@@ -6,17 +6,17 @@
 <section class="container-fluid">
 	<section class="row">
 		<section class="col-md-6">
-			<ul class="nav nav-tabs">
-				<li class="active"><a data-toggle="tab" href="#menu1"><img width="40" height="30" src="{{asset('/images/'.$product->productImage)}}"></a></li>&nbsp;
-				<li><a data-toggle="tab" href="#menu2"><img width="40" height="30" src="{{asset('/images/'.$product->view1)}}"></a></li>&nbsp;
-				<li><a data-toggle="tab" href="#menu3"><img width="40" height="30" src="{{asset('/images/'.$product->view2)}}"></a></li>
+			<ul class="nav nav-tabs" style="border-bottom: none;">
+				<li class="active"><a data-toggle="tab" href="#menu1"><img class="rounded-circle"width="40" height="30" src="{{asset('/images/'.$product->productImage)}}"></a></li>&nbsp;
+				<li><a data-toggle="tab" href="#menu2"><img class="rounded-circle"width="40" height="30" src="{{asset('/images/'.$product->view1)}}"></a></li>&nbsp;
+				<li><a data-toggle="tab" href="#menu3"><img class="rounded-circle"width="40" height="30" src="{{asset('/images/'.$product->view2)}}"></a></li>
 			</ul>
 			<br>
-			<div class="tab-content img-magnifier-container">
-				<div id="menu1" class="tab-pane fade">
+			<div class="tab-content img-magnifier-container" style="width: 423px;">
+				<div id="menu1" class="tab-pane fade active show">
 					<img id="img1" width="400" height="300" src="{{asset('/images/'.$product->productImage)}}">
 				</div>
-				<div id="menu2" class="tab-pane fade in active">
+				<div id="menu2" class="tab-pane fade in">
 					<img id="img2" width="400" height="300" src="{{asset('/images/'.$product->view1)}}">
 				</div>
 				<div id="menu3" class="tab-pane fade">
@@ -35,8 +35,16 @@
 	</section>
 	<section class="col-md-6">
 		<h2><b>{{$product->productName}}</b></h2>
+		@if($product->sale==0)
 		<h2 style="color: red;">{{number_format($product->productPrice,0,',','.')}}<sup>đ</sup></h2>
-
+		@else
+		<section class="price" style="text-decoration: line-through;">
+				<h2>{{number_format($product->productPrice,0,',','.')}}<sup>đ</sup></h2>
+			</section>
+			<section class="price" style="color: red;">
+				<h2>{{number_format($product->priceNew,0,',','.')}}<sup>đ</sup></h2>
+			</section>
+		@endif
 		<table class="table table-bordered" style="width: 60%;padding-right: 30%;margin-left: 20%;float: left;">
 			<tr>
 				<th style="background: #ccc;">Size</th>
@@ -66,28 +74,6 @@
 
 </section>
 <section class="contaner-fluid" id="show">
-	
-	@if(session('user'))		
-	<form method="post" class="frm">
-		@csrf
-		<table class="table table-bordered">
-			<tr>
-				<td><h5 style="color: blue;">Để lại bình luận dưới tên <a href="/user" style="text-decoration:none;font-style: italic;"><b>{{$userName}}</b></a></h5></td>
-				<td><input id="txt" type="text" name="comment" placeholder="Viết bình luận..." required></td>
-				<td><input style="width: 55px;" class="ip" type="number" min="1" max="10" name="rate" placeholder="Rate" required>&nbsp;					
-					<b>| 10 </b><span class="fa fa-star checked"></span>&nbsp;&nbsp;<input type="submit" class="btn btn-sm btn-outline-dark" value="Post"></td>
-				</tr>
-			</table>
-{{-- 		<section class="form-group">
-			
-			&nbsp;&nbsp;
-			
-			
-		</section> --}}
-	</form>
-	@else
-	<a href="{{asset('login')}}">Đăng nhập để bình luận</a>
-	@endif
 	<h3 style="color: orange; font-style: italic;"><b>Phản hồi từ khách hàng</b></h3>
 	<div class="table-wrapper-scroll-y my-custom-scrollbar">
 		<table id="comment" class="table table-bordered table-striped mb-0">

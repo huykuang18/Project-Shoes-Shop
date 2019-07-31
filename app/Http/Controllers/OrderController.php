@@ -10,6 +10,7 @@ use App\Order;
 use App\Product;
 use App\OrderDetail;
 use App\Prices;
+use App\Rate;
 
 class OrderController extends Controller
 {
@@ -24,9 +25,17 @@ class OrderController extends Controller
 		$user = User::where('username',session('user'))->first();
 		$userId=$user->id;
 		$methodId=$request->methodId;
+		$receiver=$request->receiver;
+		$receiverMobile=$request->receiverMobile;
+		$receiverAddress=$request->receiverAddress;
+		$note=$request->note;
 		Order::insert([
 			'userId'=>$userId,
-			'methodId'=>$methodId
+			'methodId'=>$methodId,
+			'receiver'=>$receiver,
+			'receiverMobile'=>$receiverMobile,
+			'receiverAddress'=>$receiverAddress,
+			'note'=>$note
 		]);
 		$order = Order::orderBy('id','desc')->first();
 		$orderId = $order->id;
@@ -69,8 +78,51 @@ class OrderController extends Controller
 	public function OrderDetail($id){
 		$user = User::where('username',session('user'))->first();
 		$userId=$user->id;
-		$order=Order::where('userId',$userId)->first();
+		$order=Order::where('userId',$userId)->where('id',$id)->first();
 		$orderDetails=OrderDetail::where('orderId',$id)->get();
-		return view('orderDetail',compact('order','orderDetails'));
+		$userName=User::where('username',session('user'))->first();
+		return view('orderDetail',compact('order','orderDetails','userName'));
+	}
+
+	public function postProduct($id, Request $request)
+	{	
+
+		$productID = $id;
+
+		$userID=User::where('username',session('user'))->first()->id;
+
+		$comment = $request->comment;
+
+		$rate = $request->rate;
+
+		
+
+
+		Rate::insert([
+
+			'productID'=>$productID,
+
+			'userID'=>$userID,
+
+			'comment'=>$comment,
+
+			'rate' => $rate
+
+		]);
+
+		$avgrate = Rate::where('ProductID',$id)->avg('rate');
+
+		$countrate = Rate::where('ProductID',$id)->count('userID');
+
+		Product::where('id',$id)->update([
+
+			'rate'=>$avgrate,
+
+			'viewed' => $countrate
+
+		]);
+
+		return redirect()->back();
+
 	}
 }

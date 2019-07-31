@@ -1,5 +1,5 @@
 <?php
-
+ 
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,8 +28,11 @@ Route::get('order','OrderController@getOrder');
 Route::post('order','OrderController@postOrder');
 Route::post('updateinfo','OrderController@updateInfo');
 
-Route::get('/product/{id?}', 'ProductController@getProduct')->name('rate_comment')->middleware('auth');
-Route::post('/product/{id?}', 'ProductController@postProduct')->name('taskPost');
+Route::get('/product/{id?}', 'ProductController@getProduct');
+Route::post('/product/{id?}', 'ProductController@postProduct');
+
+Route::get('/product/rate/{id?}', 'ProductController@getRate');
+Route::post('/product/rate/{id?}', 'ProductController@postRate');
 
 Route::get('search/{type}/{id}','Ccontroller@search');
 Route::get('searchSale/{type}/{id}','Ccontroller@searchSale');
@@ -52,20 +55,25 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
 	Route::post('productedit/{id}','AdminController@postProductEdit');
 
 	Route::get('products','AdminController@products');
+	Route::get('products/brandID/{id}','AdminController@product');
 	
 	Route::get('logout','AdminController@logout');
 
 	Route::get('product/delete/{id?}','AdminController@productDelete');
+	Route::get('product/search/keyword','AdminController@searchProducts');
 
 	Route::get('/','AdminController@index');
 
 	Route::get('productInsert','AdminController@insert');
 	Route::post('productInsert','AdminController@postInsert');
 
-	//add
-	Route::get('rates/{id?}','AdminController@rates');
+	//rate
+	Route::get('rateDetail/{id?}','AdminController@rateDetail');
 	Route::get('delete/rate/{id}','AdminController@rateDelete');
+	Route::get('rates','AdminController@rates');
+	Route::get('rate/brandID/{id}','AdminController@rate');
 
+	//brand
 	Route::get('brands','AdminController@brands');
 	Route::get('brands/insert','AdminController@getBrandInsert');
 	Route::post('brands/insert','AdminController@postBrandInsert');
@@ -73,6 +81,7 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
 	Route::get('edit/brand/{id}','AdminController@getBrandEdit');
 	Route::post('edit/brand/{id}','AdminController@postBrandEdit');
 
+	//ordermethods
 	Route::get('ordermethods','AdminController@ordermethods');
 	Route::get('ordermethods/insert','AdminController@getOrderMethodInsert');
 	Route::post('ordermethods/insert','AdminController@postOrderMethodInsert');
@@ -80,6 +89,7 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
 	Route::get('edit/ordermethod/{id}','AdminController@getOrderMethodEdit');
 	Route::post('edit/ordermethod/{id}','AdminController@postOrderMethodEdit');
 
+	//order
 	Route::get('order/status/{id}','AdminController@order');
 	Route::get('order','AdminController@orders');
 	Route::get('delete/order/{id}','AdminController@orderDelete');
@@ -118,5 +128,13 @@ Route::prefix('admin')->middleware('adminLogin')->group(function(){
 	Route::post('saleEdit/{id}','AdminController@postSaleEdit');
 
 	Route::get('sale/delete/{id?}','AdminController@saleDelete');
+
+	//product_size
+	Route::get('productSizeDetail/{id}','AdminController@productSizeDetail');
+	Route::get('productSizes/brandID/{id}','AdminController@productSizes');
+	Route::get('productSizes','AdminController@productSize');
+
+	Route::get('/productSizeEdit/{id}','AdminController@productSizeEdit');
+	Route::post('/productSizeEdit/{id}','AdminController@postProductSizeEdit');
 
 });

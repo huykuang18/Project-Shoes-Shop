@@ -3,16 +3,12 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
+	<meta property="fb:app_id" content="2413901042187862"/>
 	<title>Trang chủ</title>
 	<link rel="stylesheet" type="text/css" href="/css/index.css">
-	<style>
-		#popup_banner_beta{position:fixed;width:100%;height:100vh;z-index:99999;top:0;left:0}.mask_popup_banner_beta{background:rgba(0,0,0,.38);cursor:pointer;position:absolute;width:100%;height:100vh;top:0;z-index:9;left:0}.content_popup_banner_beta{position:absolute;top:50%;left:50%;z-index:10;transform:translate(-50%,-50%);-moz-transform:translate(-50%,-50%);-o-transform:translate(-50%,-50%);-webkit-transform:translate(-50%,-50%)}.close_icon{position:absolute;top:-70px;right:-60px;width:70px;cursor:pointer}@media only screen and (max-width:480px){.content_popup_banner_beta{width:300px}.content_popup_banner_beta a img:nth-of-type(1){width:100%}.close_icon{top:-60px;right:-20px;width:50px}}
-	</style>
 </head>
 <body >
-	<div id="fb-root"></div>
-	<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.3&appId=366848667335925&autoLogAppEvents=1"></script>
-	<section class="slide" >
+
 		<div id="demo" class="carousel slide" data-ride="carousel" >
 
 			<!-- Indicators -->
@@ -84,4 +80,30 @@
 	</script>
 	@include('layouts/footer')
 </body>
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      xfbml            : true,
+      version          : 'v3.3'
+    });
+  };
+
+  (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your customer chat code -->
+<div class="fb-customerchat"
+  attribution=setup_tool
+  page_id="110121030321978"
+  theme_color="#20cef5"
+  logged_in_greeting="Hello bạn! Cần mình giúp gì nào? ;)"
+  logged_out_greeting="Hello bạn! Cần mình giúp gì nào? ;)">
+</div>
 </html>

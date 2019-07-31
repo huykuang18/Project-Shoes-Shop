@@ -10,7 +10,7 @@ class Product extends Model
     public $timestamps=false;
     public function product_comments()
     {
-    	return $this->hasMany(\App\Rate::class,'productID','id');
+    	return $this->hasMany(\App\Rate::class,'productID','id'); 
     }
     public function orderdetail()
 	{

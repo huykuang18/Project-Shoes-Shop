@@ -16,9 +16,9 @@ class ProductController extends Controller
 
 		$product=Product::find($id);
 
-		$userName=User::where('username',session('user'))->first()->fullname;
+		$productComments = $product->product_comments()->with('user')->orderByDesc('created_at')->get();
 
-		$productComments = $product->product_comments()->with('user')->get();
+		$userName=User::where('username',session('user'))->first(); 
 
 		$productSizes = SizeProduct::where('productId',$id)->get();
 
@@ -27,7 +27,18 @@ class ProductController extends Controller
 		return view('productdetail',compact('product','productComments','userName','productSizes','sizes'));
 	}
 
-	public function postProduct($id=null, Request $request)
+	public function getRate($id){
+
+		$product=Product::find($id);
+
+		$productComments = $product->product_comments()->with('user')->orderByDesc('created_at')->get();
+
+		$userName=User::where('username',session('user'))->first(); 
+
+		return view('rate',compact('product','productComments','userName'));
+	}
+
+	public function postRate($id=null, Request $request)
 	{	
 
 		$productID = $id;
@@ -37,9 +48,6 @@ class ProductController extends Controller
 		$comment = $request->input('comment');
 
 		$rate = $request->rate;
-
-		
-
 
 		Rate::insert([
 
@@ -65,7 +73,7 @@ class ProductController extends Controller
 
 		]);
 
-		return redirect()->back();
+		return redirect('order/follow');
 
 	}
 }

@@ -6,6 +6,7 @@
 		<th>Họ tên khách hàng</th>
 		<th>Phương thức thanh toán</th>
 		<th>Trạng thái đơn hàng</th>
+		<th>Cập nhật gần nhất</th>
 		<th>Thao tác</th>
 	</tr>
 	@foreach($orders as $order)
@@ -24,13 +25,13 @@
 			Đã giao hàng thành công
 			@endif
 		</td>
+		<td>{{$order->orderDate}}</td>
 		<td>
 			<a href="{{asset('admin/edit/order/'.$order->id)}}" class="btn btn-info"><i class="fa fa-pencil"></i></a>
 			@if($order->status==4)
 			<a href="{{asset('admin/delete/order/'.$order->id)}}" onclick="return confirm('Bạn chắc chắn muốn xóa?')" class="btn btn-danger"><i class="fa fa-close"></i></a>
-			@else		
-			@endif
-			
+			@else	
+			@endif			
 		</td>
 	</tr>
 	@endforeach

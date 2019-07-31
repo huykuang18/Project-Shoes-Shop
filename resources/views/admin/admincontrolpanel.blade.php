@@ -1,5 +1,5 @@
 @extends('admin.mainadmin')
-<link rel="stylesheet" href="/css/app/css">
+<link rel="stylesheet" href="/css/app.css">
 @section('content')
 	<form action="" style="width: 80%;height: 150px; background-color: pink;margin:auto">
 		<h3 style="text-align: center;padding-top: 4%">Nếu cần hỗ trợ khách hàng, quý khách vui lòng thực hiện</h3>

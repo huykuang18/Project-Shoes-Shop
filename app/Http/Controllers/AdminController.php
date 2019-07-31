@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Http\Controllers;
 
@@ -14,7 +14,7 @@ use App\Brand;
 use App\Rate;
 use App\Price;
 use App\Sale;
-
+use App\SizeProduct;
 
 class Admincontroller extends Controller
 {
@@ -25,49 +25,37 @@ class Admincontroller extends Controller
         return view('admin.product.product', compact('products','orderDetails'));
 
     }
-
-    public function login(){
-        return view('admin.login');
+    public function searchProducts(Request $request)
+    {
+        $products=DB::table('brand as a')->join('products as b','a.id','b.brandId')->where('productName','like','%'.$request->keyword.'%')->get();
+        $orderDetails=OrderDetail::select('productId')->get();
+        return view('admin.product.product', compact('products','orderDetails'));
     }
+    public function product(Request $request,$id)
+    {
+        $products=DB::table('brand as a')->join('products as b','a.id','b.brandId')->where('brandID',$id)->get();
+        $orderDetails=OrderDetail::select('productId')->get();
+        return view('admin.product.product', compact('products','orderDetails'));
 
-    public function index(){
-        return view('admin.admincontrolpanel');
-    }
-
-    public function postLoginAdmin(Request $request){
-        $username=$request->input('username');
-        $password=md5($request->input('password'));
-        $admin=Admin::where('username',$username)->where('password',$password)->get();
-        if(count($admin)==0){
-            return redirect()->back()->with('alert','Sai tên đăng nhập hoặc mật khẩu');
-        }else{
-            session(['userAdmin'=>$username]);
-            return redirect('admin');
-        }
-    }
-
-    public function logout(){
-        session()->forget('userAdmin');
-        return redirect('admin');
     }
 
     public function productEdit($id){
-        $product=Product::where('id',$id)->first();
+        $product=Product::find($id);
         $brands=Brand::all();
         return view('admin.product.productEdit',compact('brands','product'));
     }
 
     public function postProductEdit($id, Request $request)
     {
-       $product=Product::find($id);
-       $brandId=$request->brandId;
-       $brand=Brand::where('id',$brandId)->first();
-       $brandName=$brand->brandName;
-       $productName=$request->productName;
-       $productPrice=$request->productPrice;
-       $productDescription=$request->productDescription;
-       $productImage=$request->file('productImage');
-       if($productImage!=null){
+     $product=Product::find($id);
+     $brandId=$request->brandId;
+     $brand=Brand::where('id',$brandId)->first();
+     $brandName=$brand->brandName;
+     $productName=$request->productName;
+     $productPrice=$request->productPrice;
+     $productDescription=$request->productDescription;
+     $productImage=$request->file('productImage');
+     if($productImage!=null){
         $image=$brandName.'/'.$productImage->getClientOriginalName();
         $productImage->move('images/'.$brandName,$image);
             // unlink('images/'.$product->productImage);
@@ -121,10 +109,52 @@ public function postInsert(Request $request)
     return redirect('admin/products');
 }
 
+
+public function login(){
+    return view('admin.login');
+}
+
+public function index(){
+    return view('admin.admincontrolpanel');
+}
+
+public function postLoginAdmin(Request $request){
+    $username=$request->input('username');
+    $password=md5($request->input('password'));
+    $admin=Admin::where('username',$username)->where('password',$password)->get();
+    if(count($admin)==0){
+        return redirect()->back()->with('alert','Sai tên đăng nhập hoặc mật khẩu');
+    }else{
+        session(['userAdmin'=>$username]);
+        return redirect('admin');
+    }
+}
+
+public function logout(){
+    session()->forget('userAdmin');
+    return redirect('admin');
+}
+
+
     //Add
 
     //Rates
-public function rates($id=null)
+public function rates()
+{
+    $products=Product::all();
+
+    return view('admin.rate.rate',compact('products'));
+
+}
+
+public function rate($id)
+{
+    $products=Product::where('brandID',$id)->get();
+
+    return view('admin.rate.rate',compact('products'));
+}
+
+public function rateDetail($id=null)
 {
     $product=Product::find($id);
 
@@ -132,7 +162,7 @@ public function rates($id=null)
 
     $countrate = Rate::where('ProductID',$id)->count('userID');
 
-    return view('admin.rate.rate',compact('productComments','countrate'));
+    return view('admin.rate.rateDetail',compact('productComments','countrate'));
 
 }
 
@@ -227,11 +257,11 @@ public function postordermethodEdit(Request $request,$id){
 
     //Order
 public function order($id){
-    $orders=Order::where('status',$id)->get();
+    $orders=Order::where('status',$id)->orderBy('updated_at')->get();
     return view('admin.order.order',compact('orders'));
 }
 public function orders(){
-    $orders=Order::all();
+    $orders=Order::orderBy('status','ASC')->orderBy('updated_at','ASC')->get();
     return view('admin.order.order',compact('orders'));
 }
 public function orderDelete($id){
@@ -239,9 +269,8 @@ public function orderDelete($id){
     return redirect()->back();
 }
 public function getorderEdit($id){
-    $user = User::where('username',session('user'))->first();
-    $userId=$user->id;
-    $order=Order::where('userId',$userId)->first();
+
+    $order=Order::where('id',$id)->first();
     $orderDetails=OrderDetail::where('orderId',$id)->get();
     return view('admin.order.orderEdit',compact('order','orderDetails'));
 }
@@ -398,4 +427,55 @@ public function saleDelete($id=null){
 
     return redirect('admin/sales');
 }
+public function productSize()
+{
+    $productSizes =Product::where('status',1)->get();
+    return view('admin.product_size.productSize',compact('productSizes'));
+}
+public function productSizes($id){
+    $productSizes=Product::where('status',1)->where('brandID',$id)->get();
+    return view('admin.product_size.productSize',compact('productSizes'));
+}
+public function productSizeDetail($id)
+{
+    $product=Product::find($id);
+    $productSizes=SizeProduct::where('productId',$id)->get();
+    return view('admin.product_size.productSizeDetail', compact('productSizes','product'));
+}
+
+// public function productSizeDelete($id=null)
+// {
+//     SizeProduct::where('id',$id)->delete();
+//     return redirect('admin/productSizes');
+// }
+
+// public function productSizeInsert()
+// {
+//     return view('admin.product_size.productSizeInsert');
+// }
+
+// public function postProductSizeInsert(Request $request)
+// {
+//     SizeProduct::insert([
+//         'productId'=>$request->productid,
+//         'sizeId'=>$request->sizeid,
+//         'quantity'=>$request->quantity
+//     ]);
+//     return redirect('admin/productSizes');
+// }
+
+public function productSizeEdit($id)
+{
+    $productSizes=SizeProduct::find($id);
+    return view('admin.product_size.productSizeEdit',compact('productSizes'));
+}
+public function postProductSizeEdit(Request $request,$id)
+{   
+    $productId = SizeProduct::where('id',$id)->first();
+    SizeProduct::where('id',$id)->update([
+        'quantity'=>$request->quantity
+    ]);
+    return redirect('admin/productSizeDetail/'.$productId->productId);
+}
+
 }

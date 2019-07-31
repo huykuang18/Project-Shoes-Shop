@@ -5,6 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/admin.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -35,56 +36,101 @@
 			@endif
 		</section>
 	</nav>
-	
-	<table class="table table-bordered">
-		<tbody>
-			
-			<tr>
-				<td style="width: 18%">
-					<a href="/admin/products"><i class="fa fa-check" aria-hidden="true"></i>&nbsp;Quản lý sản phẩm</a><hr>
-					<div class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart" aria-hidden="true" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown"></i>&nbsp;Quản lý đơn hàng<span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<a class="dropdown-item" href="{{url('admin/order')}}">Tất cả đơn hàng
-							</a><hr>
-							<a class="dropdown-item" href="{{url('admin/order/status/1')}}">Chưa xử lý
-							</a><hr>
-							<a class="dropdown-item" href="{{url('admin/order/status/2')}}">Đã đóng gói
-							</a><hr>
-							<a class="dropdown-item" href="{{url('admin/order/status/3')}}">Đang vận chuyển
-							</a><hr>
-							<a class="dropdown-item" href="{{url('admin/order/status/4')}}">Đã hoàn tất
-							</a>
-						</ul>
-					</div><hr>
-					<a href=""><i class="fa fa-th-list" aria-hidden="true"></i>&nbsp;Quản trị giao diện</a><hr>
-					<a href="/admin/users"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Quản lý User</a><hr>
+	<div id="mySidenav" class="sidenav">					
+		<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+		<div class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-archive" aria-hidden="true" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown"></i>&nbsp;Quản lý sản phẩm<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<a class="dropdown-item" href="{{asset('admin/products/')}}">Tất cả
+				</a><hr>
+				<a class="dropdown-item" href="{{asset('admin/products/brandID/1')}}">Adidas
+				</a><hr>
+				<a class="dropdown-item" href="{{asset('admin/products/brandID/2')}}">Bitis
+				</a><hr>
+				<a class="dropdown-item" href="{{asset('admin/products/brandID/3')}}">Converse
+				</a><hr>
+				<a class="dropdown-item" href="{{asset('admin/products/brandID/4')}}">Nike
+				</a><hr>
+			</ul>
+		</div><hr>
+		<div class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart" aria-hidden="true" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown"></i>&nbsp;Quản lý đơn hàng<span class="caret"></span></a>
+			<ul class="dropdown-menu">
+				<a class="dropdown-item" href="{{url('admin/order')}}">Tất cả đơn hàng
+				</a><hr>
+				<a class="dropdown-item" href="{{url('admin/order/status/1')}}">Chưa xử lý
+				</a><hr>
+				<a class="dropdown-item" href="{{url('admin/order/status/2')}}">Đã đóng gói
+				</a><hr>
+				<a class="dropdown-item" href="{{url('admin/order/status/3')}}">Đang vận chuyển
+				</a><hr>
+				<a class="dropdown-item" href="{{url('admin/order/status/4')}}">Đã hoàn tất
+				</a>
+			</ul>
+		</div><hr>
+		<a href=""><i class="fa fa-th-list" aria-hidden="true"></i>&nbsp;Quản trị giao diện</a><hr>
+		<a href="/admin/users"><i class="fa fa-user-circle-o" aria-hidden="true"></i>&nbsp;Quản lý User</a><hr>
 
 
-					{{-- add --}}
-					<div class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-commenting" aria-hidden="true" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown"></i>&nbsp;Quản lý phản hồi sản phẩm			
-							<span class="caret"></span></a>
-							<ul class="dropdown-menu">
-								<?php $products=DB::table('products')->where('status',1)->get(); ?>
-								@foreach($products as $product)
-								<a class="dropdown-item" href="{{url('admin/rates/'.$product->id)}}">
-									<b>{{$product->id}}</b>&nbsp;
-									<img style="width: 15% " src="{{asset('/images/'.$product->productImage)}}" alt="">{{$product->productName}}<hr>
-								</a>
-								@endforeach
-							</ul>
-						</div><hr>
-						<a href="/admin/brands"><i class="fa fa-handshake-o" aria-hidden="true"></i>&nbsp;Hãng sản xuất</a><hr>
-						<a href="/admin/ordermethods"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Các phương thức thanh toán</a><hr>
-						<a href="/admin/prices"><i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Quản lý đơn giá</a><hr>
-						<a href="/admin/sales"><i class="fa fa-percent" aria-hidden="true"></i>&nbsp;Quản lý mức sale</a><hr>
+		{{-- add --}}
+		<div class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-commenting" aria-hidden="true" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown"></i>&nbsp;Quản lý phản hồi sản phẩm			
+				<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<a class="dropdown-item" href="{{url('admin/rates')}}">Tất cả sản phẩm
+					</a><hr>
+					<a class="dropdown-item" href="{{url('admin/rate/brandID/1')}}">Adidas
+					</a><hr>
+					<a class="dropdown-item" href="{{url('admin/rate/brandID/2')}}">Bitis
+					</a><hr>
+					<a class="dropdown-item" href="{{url('admin/rate/brandID/3')}}">Converse
+					</a><hr>
+					<a class="dropdown-item" href="{{url('admin/rate/brandID/4')}}">Nike
+					</a>
+				</ul>
+			</div><hr>
+			<a href="/admin/brands"><i class="fa fa-handshake-o" aria-hidden="true"></i>&nbsp;Hãng sản xuất</a><hr>
+			<a href="/admin/ordermethods"><i class="fa fa-money" aria-hidden="true"></i>&nbsp;Các phương thức thanh toán</a><hr>
+			<a href="/admin/prices"><i class="fa fa-ticket" aria-hidden="true"></i>&nbsp;Quản lý đơn giá</a><hr>
+			<a href="/admin/sales"><i class="fa fa-percent" aria-hidden="true"></i>&nbsp;Quản lý mức sale</a><hr>
+			<div class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-shopping-cart" aria-hidden="true" class="nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown"></i>&nbsp;Quản lý kho<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<a class="dropdown-item" href="{{asset('admin/productSizes/')}}">Tất cả
+					</a><hr>
+					<a class="dropdown-item" href="{{asset('admin/productSizes/brandID/1')}}">Adidas
+					</a><hr>
+					<a class="dropdown-item" href="{{asset('admin/productSizes/brandID/2')}}">Bitis
+					</a><hr>
+					<a class="dropdown-item" href="{{asset('admin/productSizes/brandID/3')}}">Converse
+					</a><hr>
+					<a class="dropdown-item" href="{{asset('admin/productSizes/brandID/4')}}">Nike
+					</a><hr>
+				</ul>
+			</div><hr> 
+		</div>
+		<table class="table table-bordered">
+			<tbody>
+				<tr>
 
+					<td id="content">
+						<span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
 					</td>
-					<td>@yield('content')</td>
+					<td >@yield('content')</td>
 				</tr>
 			</tbody>
 		</table>
+		<script>
+			function openNav() {
+				document.getElementById("mySidenav").style.width = "280px";
+				document.getElementById("content").style.width = "280px";
+			}
+
+			function closeNav() {
+				document.getElementById("mySidenav").style.width = "0";
+				document.getElementById("content").style.width = "0";
+			}
+		</script>
 
 	</body>
 	</html>

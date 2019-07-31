@@ -78,6 +78,9 @@
 					</li>
 				</ul>
 			</div>
-		</footer>
-	</body>
-	</html>
+		
+			</footer>
+		</body>
+		<!-- Load Facebook SDK for JavaScript -->
+
+		</html>

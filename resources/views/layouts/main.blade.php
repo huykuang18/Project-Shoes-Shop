@@ -84,12 +84,6 @@
 			@endif
 		</ul>
 	</nav>
-	<a href="" class="btn-call-now" style="text-decoration:none;">
-		<em class="fa fa-phone">
-			&nbsp;
-		</em>
-		<span class="lienhe">Liên hệ ngay 0373872918</span>
-	</a>
 	<script src="/js/app.js?v={{env('APP_ENV') == 'local' ? time() : base64(2)}}"></script>
 	@stack("scripts")
 	<script>

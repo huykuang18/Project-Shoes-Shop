@@ -44,10 +44,10 @@ $total=0;
 			@endif
 		</section>
 		<section class="col-md-2">
-			<input min="36" max="43" class="form-control form-control-sm" type="number" name="size" value='{{session("cart.$product->id.size")}}'>	
+			<input autocomplete="on" min="36" max="43" class="form-control form-control-sm" type="number" name="{{$product->id}}size" value='{{session("cart.$product->id.size")}}'>	
 		</section>
 		<section class="col-md-2">
-			<input class="form-control form-control-sm" type="number" name="number" value='{{session("cart.$product->id.number")}}'>	
+			<input autocomplete="on" min="1" class="form-control form-control-sm" type="number" name="{{$product->id}}number" value='{{session("cart.$product->id.number")}}'>	
 		</section>
 		<section class="col-md-2">
 			@if($product->sale==0)

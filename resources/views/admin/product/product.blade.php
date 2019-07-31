@@ -4,7 +4,15 @@
 
 
 <section style="width: 85%; background-color: white;margin-left: 7%">
-	<a href="{{url('admin/productInsert/')}}" class="btn btn-primary" style="margin:2%"><b>+ </b>Thêm mới</a>
+	<form class="form-inline" method="get" action="{{url('admin/product/search/keyword')}}">
+		<section class="mr-auto">
+			<input style="	width: 300px;" type="search" name="keyword" class="form-control mr-0.5" placeholder="Tìm kiếm sản phẩm..."> 
+			<button type="submit" class="btn btn-success"><i style="height: 23px;" class="fa fa-search"></i></button>
+		</section>
+		<a href="{{url('admin/productInsert/')}}" class="btn btn-primary" style="margin:2%"><b>+ </b>Thêm mới</a>
+	</form>
+
+	
 	<hr>
 	<table class="table table-bordered table-striped mb-0">
 		<thead>

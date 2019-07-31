@@ -4,18 +4,25 @@
 }
 
 .img:hover{
-	transform: scale(1.12);
+	position: absolute;
+	overflow: hidden;
 	cursor: pointer;
+	transform: scale(1.12,1.12);
+	-webkit-transform: scale(1.12,1.12);
+	-moz-transform: scale(1.12,1.12);
+	-o-transform: scale(1.12,1.12);
+	-ms-transform: scale(1.12,1.12);
 }
 
 .img{
-	transition-duration: 0.69s;
+	overflow: hidden;
+	transition: all 1s ease;
+	-webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
 }
 
-.sp{
-	border: #ccc thin solid;
-	
-}
-#images
+#images{
 	text-align: center;
-} 
+	position: relative;
+}

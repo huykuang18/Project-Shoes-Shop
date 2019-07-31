@@ -27,20 +27,21 @@ class CartController extends Controller
 			case 'update':
 			foreach (array_keys(session('cart')) as $key) {
 				session([
-					"cart.$key.number"=>$request->input('number'),
-					"cart.$key.size"=>$request->input('size')
+					"cart.$key.number"=>$request->input($key."number"),
+					"cart.$key.size"=>$request->input($key."size")
 				]);
 			}
 			return redirect("cart");
 			break;
 
 			case 'add':
-			if (session("cart.$id")){
-				session(["cart.$id"=>session("cart.$id")+1]);
+			if (session("cart.$id.number")){
+				session(["cart.$id.number"=>session("cart.$id.number")+1]);
 			}else{
-				session(["cart.$id"=>1]);
+				session(["cart.$id.size"=>36]);
+				session(["cart.$id.number"=>1]);
 			}
-			return redirect('cart');
+			return redirect("cart");
 			break;
 
 			case 'delete':
